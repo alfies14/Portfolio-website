@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    YOUR NAME HERE, date, project name, class, etc.
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Hex Color Maker</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+    /* styles go here */
+        body{
+            text-align: center; font-family: sans-serif;
+        }
+        input{
+            width: 250px;
+            height: 24px;
+        }
+        button{
+            height: 30px;
+            width: 60px;
+            border: none;
+            background: linear-gradient(#bfc1c2,#c9c0bb);
+            border-radius: 4px;
+        }
+        footer{
+            margin-top: 2em;
+            font-size: 90%;
+        }
+        div#swatches{
+            margin-top: 1em;
+        }
+        div#swatches div{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 2px;
+            display: inline-block;
+            background-color: mediumblue;
+        }
+        div#captions div{
+            width: 80px;
+            display: inline-block;
+            margin: 2px;
+            font-family: "Andale Mono", "Courier New", monospace;
+            font-size: 90%;
+        }
+        div#case p  {
+        color: darkorchid;
+        }
+        p#sideways{
+            display: none;
+        }
+        @media screen and (max-width: 450px){
+            p#sideways{display: block;}
+        }
+        @media screen and (min-height: 700px){
+            body{ margin-top: 150px;}
+        }
+        @media screen and (min-height: 1000px){
+            body{margin-top: 275px;}
+        }
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Hex Color Maker</h1>
+    <!-- page content will go here -->
+    <input type="text" id="userinput"/>
+    <button id="draw">Draw</button>
+    <button id="random">Random</button>
+    <button id="dark">Themes</button>
+
+    <div id="swatches">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+    </div>
+    <div id="captions">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+    </div>
+    <p id="sideways"> This app works best in Landscape</p>
+    <div id="case">
+        <p><b>Objective:</b>
+            Show my two apple projects, one in SVG and the other in Adobe Illustrator
+    
+        </p>
+        <p><b>Problem:</b>
+            How to adequately show off my creation in a concise way
+    
+        </p>
+        <p><b>Solution:</b>
+            I put my two apple creations in 2 by 1 and made them sizably big so we easily see both logos.
+    
+    
+        </p>
+    </div>
+    <div id="nav">
+        <a href=".">
+            <img src="navicons/white-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+
+    <footer>Copyright&copy; 2021 Alfredo Rodriguez</footer>
+    <script type='text/javascript'>
+    // scripts will go here
+        function get(id){
+            return document.getElementById(id);
+        }
+        var swatches = get('swatches').getElementsByTagName('div');
+        var captions = get('captions').getElementsByTagName('div');
+
+        var bgColors = [
+            "white", "black", "pink", "azure", "#432", "Wheat"
+        ];
+        var fgColors = [
+            "black", "#C0C0C0", "white", "black", "white", "black"
+        ];
+        function setupClickHandelers(){
+            get('draw').onclick= draw;
+            get('random').onclick= random;
+            get("dark").onclick= darkMode;
+        }
+        function draw(){
+            var stuff = get('userinput').value;
+            // alert(stuff);
+            var colors = stuff.trim().split(/  */);
+            // alert(colors.length);
+            for(var i=0;i<5;i++){
+                swatches[i].style.backgroundColor = colors[i];
+                captions[i].textContent= colors[i];
+            }
+            
+        }
+        function random(){
+            var myString = "";
+            for(var i=0; i<4; i++){
+              myString+= makeOneRandomColor();
+              myString += " ";
+            }
+            
+            myString += makeOneRandomColor();
+            get('userinput').value = myString;
+            draw();
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+            // mystring += makeOneRandomColor();
+            // mystring += " ";
+           
+        }
+        function makeOneRandomColor(){
+            var myString = "#";
+            for(var i=0;i<6;i++){
+                myString +=makeOneRandomHexDigit();
+            }
+            // myString += makeOneRandomHexDigit();
+            // myString += makeOneRandomHexDigit();
+            // myString += makeOneRandomHexDigit();
+            // myString += makeOneRandomHexDigit();
+            // myString += makeOneRandomHexDigit();
+            // myString += makeOneRandomHexDigit();
+            
+            return myString;
+        }
+        function makeOneRandomHexDigit(){
+            var hexDigits = "0123456789ABCDEF";
+            var which = Math.floor(hexDigits.length * Math.random());
+            return hexDigits[which];
+        }
+        function darkMode(){
+            var body = document.getElementsByTagName('body')[0];
+            var currentBg = body.style.backgroundColor;
+            
+            var currentIndex = bgColors.indexOf(currentBg);
+          
+          
+            if(currentIndex == -1){
+                body.style.backgroundColor = bgColors[1];
+                body.style.color =fgColors[1];
+            }
+            else{
+                var newIndex = (currentIndex + 1) % bgColors.length;
+                body.style.backgroundColor = bgColors[newIndex];
+                body.style.color = fgColors[newIndex];
+            }
+
+
+
+            // if(currentBg !='black'){
+            //     body.style.backgroundColor= "black";
+            //     body.style.color= "#C0C0C0";
+            // }
+            // else{
+            //     body.style.backgroundColor = "white";
+            //     body.style.color= "black";
+            // }
+
+            // colorIndex= (colorIndex+ 1) % bgColors.length;
+            // body.style.backgroundColor = bgColors[colorIndex];
+            // body.style.color = fgColors[colorIndex];
+
+
+
+
+        }
+
+        setupClickHandelers();
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    13 September 2021
+    SVCTE Mobile Apps Design
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Fun Time 4 Colors</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+    /* styles go here */
+        
+    div#nav{
+        position:fixed;
+        width: 100%;
+        margin: 8px auto;
+        text-align:center;
+        opacity: 50%;
+
+        
+       
+    }
+    button { width: 50%;
+                height: 50.1%;
+                margin: 0px;
+                padding: 0px;
+                font-size: 72px;
+                border: none;
+                font-family: "Comic Sans MS", sans-serif;
+                
+        }
+
+        body{
+            margin: 0; padding: 0; align-content: center;
+        }
+        html,body {height:100%; fill: inherit;}
+        /* button#upperleft{
+            background-color: #fb565a;
+        }
+        button#upperright{
+            background-color: #f1dc1b;
+        }
+        button#lowerleft{
+            background-color: #2d85de;
+            
+        }
+        button#lowerright{
+            background-color: #1cc4ab;
+            
+        } */
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<div id="nav">
+    <a href=".">
+        <img src="navicons/white-arrow-left.svg" alt="previous"/>
+    </a>
+    <a href=".">
+        <img src="navicons/white-house.svg" alt="home"/>
+    </a>
+    <a href=".">
+        <img src="navicons/white-arrow-right.svg" alt="next"/>
+    </a>
+</div>
+<body>
+    
+    <!-- page content will go here -->
+    
+    <button id="upperleft">1</button><button id="upperright">2</button><button id="lowerleft">4</button><button id="lowerright">3</button>
+    <div id="nav">
+        <a href=".">
+            <img src="navicons/white-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+    
+    <script type='text/javascript'>
+    function get(id){
+        return document.getElementById(id);
+    }
+        get("upperleft").style.backgroundColor ="#fb565a";
+        get("upperright").style.backgroundColor = "#f1dc1b";
+        get("lowerleft").style.backgroundColor = "#2d85de";
+        get("lowerright").style.backgroundColor = "#17ab6f";
+    
+    
+    
+    get("upperleft").onclick = moveColorsClockwise;
+    get("upperright").onclick = moveColorsCounterCW;
+    get("lowerright").onclick = moveNumbersClockwise;
+    get("lowerleft").onclick = scramble;
+
+    function moveColorsClockwise(){
+        var myColor = get("upperleft").style.backgroundColor;
+        // get("upperleft").style.backgroundColor =
+        //     get("lowerleft").style.backgroundColor;
+        // get("lowerleft").style.backgroundColor = 
+        //     get("lowerright").style.backgroundColor;
+        // get("lowerright").style.backgroundColor = 
+        //     get("upperright").style.backgroundColor;
+        // get("upperright").style.backgroundColor = 
+        //     get("upperleft").style.backgroundColor;
+        moveColor("lowerleft", "upperleft");
+        moveColor("lowerright", "lowerleft");
+        moveColor("upperright", "lowerright");
+        get ("upperright").style.backgroundColor = myColor;
+
+    }
+    function moveColor(from,to){
+        get(to).style.backgroundColor = get(from).style.backgroundColor;
+    }
+    
+
+    function moveColorsCounterCW(){
+    var myColorCW = get("upperright").style.backgroundColor;
+        moveColor("lowerright","upperright");
+        moveColor("lowerleft","lowerright");
+        moveColor("upperleft","lowerleft");
+    get("upperleft").style.backgroundColor = myColorCW;
+        
+
+    }
+    function moveNumber(from,to){
+        get(to).innerHTML = get(from).innerHTML;
+    }
+    function moveNumbersClockwise(){
+    var myNumber = get("upperleft").innerHTML;
+        moveNumber("lowerleft", "upperleft");
+        moveNumber("lowerright", "lowerleft");
+        moveNumber("upperright", "lowerright");
+        get("upperright").innerHTML = myNumber
+    
+
+    }
+    function moveEveything(from,to){
+        get(to).style.backgroundColor = get(from).style.backgroundColor;
+        get(to).innerHTML = get(from).innerHTML;
+
+    }
+
+    function scramble(){
+        var numbers = ["1", "2", "3" ,"4", "A", "B", "C ", "D"];
+        var buttonsIds = ["upperleft", "upperright","lowerleft", "lowerright"
+        ];
+        for(var i=0; i<buttonsIds.length;i++){
+            var index = numbers.indexOf(get(buttonsIds[i]).innerHTML);
+            var newIndex = ( index + 4) % numbers.length;
+            get(buttonsIds[i]).innerHTML = numbers[newIndex];
+        }
+        window.onresize = setFontSize;
+        function setFontSize(){
+            var height = window.innerHeight;
+            var buttons = document.getElementsByTagName("button");
+            for (var i=0; i<buttons.length;i++){
+                buttons[i].style.fontSize = height/5 + "px";
+            }
+           
+            
+        }
+        setFontSize();
+    }
+    
+    // function scramble(){
+    //     var myColor = get("upperleft").style.backgroundColor;
+    //     var myNumber = get("upperleft").innerHTML;
+    //     moveEveything("lowerleft", "upperleft");
+    //     moveEveything("lowerright", "lowerleft");
+    //     moveEveything("upperright", "lowerright");
+    //     get ("upperright").style.backgroundColor = myColor;
+    //     get("upperright").innerHTML = myNumber
+
+    // }
+    
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<svg width='120' height='120' viewBox='0 0 120 120'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    
+    <polyline points='
+    60 0
+    120 50
+    120 120
+    80 120
+    80 75
+    50 75
+    50 120
+    0 120
+    0 50
+    
+     z' fill='black'/> 
+</svg>

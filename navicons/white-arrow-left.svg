@@ -1,0 +1,26 @@
+<svg width='120' height='120' viewBox='0 0 120 120'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    
+    <polyline points='
+    75 0       
+    0 60
+    75 120
+    75 85
+    120 85
+    120 35
+    75 35 z
+    
+     ' fill='white'/> 
+     <!-- To flip points get the flipped X-Axis then just minus by the 
+     maximum x-axis by the current x.  The product will be the flipped
+     x -->
+</svg>

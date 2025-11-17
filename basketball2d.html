@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    November 2 2021
+    Svcte mobile apps
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Basketball 2D</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+    /* styles go here */
+            div#nav img{
+                width: 30px;
+                padding: 15px;
+                background-color:lightgrey ;
+                margin: 0 4px;
+                border-radius: 10px;
+            }
+        body{
+            text-align: center; font-family: sans-serif; background-color: #2460a7ff;
+        }
+        footer{
+            padding-top: 2em; color:white;
+        }
+        h1,label{
+            color: white;
+        }
+        div#control button{
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            border: none;
+            margin: 2px;
+        }
+        div#control button#green{
+            background-color: green;
+        }
+        div#control button#orange{
+            background-color: orange;
+        }
+        div#control button#purple{
+            background-color: purple;
+        }
+        div#control button#red{
+            background-color: red;
+        }
+        div#control button#yellow{
+            background-color: yellow;
+        }
+        div#control button#pink{
+            background-color: pink;
+        }
+    input{
+        margin-left: 1em;
+    }
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Basketball 2D</h1>
+<svg width='800' height='600' viewBox='0 0 800 600'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+        <clipPath id='clip'>
+            <circle cx='100' cy='100' r='50'/>
+        </clipPath>
+
+
+        <radialGradient cx='30%' cy='30%' r='70%' id='orangeg'>
+            <stop offset='0' stop-color='#FFD3A7'/>
+            <stop offset='1' stop-color='#ee7700'/>
+        </radialGradient>
+        <radialGradient cx='30%' cy='30%' r='70%' id='greeng'>
+            <stop offset='0' stop-color='#8f8'/>
+            <stop offset='1' stop-color='#080'/>
+        </radialGradient>
+        <radialGradient cx='30%' cy='30%' r='70%' id='purpleg'>
+            <stop offset='0' stop-color='#cc88bb'/>
+            <stop offset='1' stop-color='#A020F0'/>
+        </radialGradient>
+        <radialGradient cx='30%' cy='30%' r='70%' id='redg'>
+            <stop offset='0' stop-color='#FF8A8A'/>
+            <stop offset='1' stop-color='#FF2E2E'/>
+        </radialGradient>
+        <radialGradient cx='30%' cy='30%' r='70%' id='yellowg'>
+            <stop offset='0' stop-color='#FFFF00'/>
+            <stop offset='1' stop-color='#A3A300'/>
+        </radialGradient>
+        <radialGradient cx='30%' cy='30%' r='70%' id='pinkg'>
+            <stop offset='0' stop-color='#FFC0CB'/>
+            <stop offset='1' stop-color='#FF647F'/>
+        </radialGradient>
+    </defs>
+
+        <!-- the shapes and stuff will go here -->
+
+        <rect x='0' y='0' width='800' height='600' fill='#A7D3FF' />
+       
+        
+
+    <g id='ball' clip-path='url(#clip)'>
+        <circle cx='100' cy='100' r='50' fill='url(#orangeg)'/>
+    </g>  
+    <g id='lines' clip-path='url(#clip)'>
+            <polyline points='
+                100 0
+                100 200
+            ' stroke='black'/>
+            <polyline points='
+                0 100
+                200 100
+            ' stroke='black'/>
+        <circle cx='25' cy='100' r='50' fill='none' stroke='black'/>
+        <circle cx='175' cy='100' r='50' fill='none' stroke='black'/>
+            <!-- <circle cx='100' cy='145' r='5' fill='red'/> -->
+    </g>
+</svg>
+    <div id="control">
+        <button id='green' >&nbsp;</button>
+        <button id='orange' >&nbsp;</button>
+        <button id='purple' >&nbsp;</button>
+        <button id='red' >&nbsp;</button>
+        <button id='yellow' >&nbsp;</button>
+        <button id='pink' >&nbsp;</button>
+        
+        <button id='faster'>+</button>
+        <button id='slower'>&ndash;</button>
+        <button id='reset'>&cir;</button>
+        <input type="checkbox" id='move'/> 
+        <label for="move">Follow Mouse</label>
+    </div>
+    
+    <div id="case">
+        <p><b>Objective:</b>
+            Create a basketball that traveled in the 1d and 2d space.
+        </p>
+        <p><b>Problem:</b>
+            How can we make it more interactive, so were not just staring at a basketball
+        </p>
+        <p><b>Solution:</b>
+            Changeable basketball color, and then make the basketball speed adjustable to the user.  
+            Then add a reset button in case the basketball becomes uncontrollable.
+        </p>
+    </div>
+
+
+
+    <div id="nav">
+        <a href=".">
+            <img src="navicons/black-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="navicons/black-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="navicons/black-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+
+    <footer>
+        Copyright &copy; Alfredo Rodriguez 2021
+    </footer>
+
+    <script type='text/javascript'>
+
+        function get(id){
+            return document.getElementById(id);
+        }
+
+        var xTranslate = 0;
+        var xDelta = 2.5;
+        var yTranslate = 0;
+        var yDelta = 1.5;
+        var rotation = 0;
+        var deltaRotation = xDelta * 1.146; //2.5
+
+        get("faster").onclick = goFaster;
+        get("slower").onclick = goSlower;
+        get("reset").onclick = doReset;
+        get('green').onclick = changeColor;
+        get('orange').onclick = changeColor;
+        get('purple').onclick = changeColor;
+        get('red').onclick = changeColor;
+        get('yellow').onclick = changeColor;
+        get('pink').onclick = changeColor;
+        document.getElementsByTagName('svg')[0].onclick = mouseClicked;
+        document.getElementsByTagName('svg')[0].onmousemove = mouseClicked;
+
+        // moveBall();
+
+        setInterval(moveBall, 20)
+        function mouseClicked(e){
+            console.log(e);
+            if(!get('move').checked && e.type == 'mousemove'){
+                return;
+            }
+            var newVectorX = e.offsetX - (xTranslate + 100);
+            var newVectorY = e.offsetY - (yTranslate + 100); 
+            
+            var newVectorLength = Math.sqrt(newVectorX**2 + newVectorY**2);
+            var oldVectorLength = Math.sqrt(xDelta**2 +yDelta**2);
+            var scaleFactor = oldVectorLength/ newVectorLength;
+            xDelta = newVectorX * scaleFactor;
+            yDelta = newVectorY * scaleFactor;
+            deltaRotation = oldVectorLength * 1.146;
+            
+        }
+
+       
+        function goFaster(){
+            // xDelta += xDelta + 0.5
+            // yDelta += yDelta + 0.5
+            
+            xDelta *= 1.414;
+            yDelta *= 1.414;
+            deltaRotation *= 1.414;
+        }
+        function goSlower(){
+            xDelta /= 1.414;
+            yDelta /= 1.414;
+            deltaRotation /= 1.414;
+        }
+        function doReset(){
+            xTranslate = 0;
+            xDelta = 2.5;
+            yTranslate = 0;
+            yDelta = 1.5;
+            rotation = 0;
+            deltaRotation = xDelta * 1.146;
+
+        }
+        function changeColor(e){
+            var buttonId = e.currentTarget.id;
+            var colorId = buttonId + "g";
+            get('ball').getElementsByTagName('circle')[0].setAttribute('fill', 'url(#' + colorId + ')'
+            );
+
+        }
+
+        function moveBall(){
+            // transform='translate(97 0) rotate(37 100 100)'
+            // var x = 497;
+       
+        xTranslate += xDelta;
+        yTranslate += yDelta;
+        rotation += deltaRotation;
+
+        if(xTranslate >= 650){
+            xDelta = -xDelta;
+            // deltaRotation = -deltaRotation;
+            deltaRotation = -Math.sign(yDelta) * Math.abs(deltaRotation);
+            
+        }
+        if(xTranslate <= -50){
+            xDelta = -xDelta;
+            deltaRotation = -deltaRotation;
+            deltaRotation = Math.sign(yDelta) * Math.abs(deltaRotation);
+        }
+        if(yTranslate >= 450){
+            yDelta = -yDelta;
+            deltaRotation = Math.sign(xDelta) * Math.abs(deltaRotation);
+        }
+        if(yTranslate <= -50){
+            yDelta = -yDelta;
+            deltaRotation = -Math.sign(xDelta) * Math.abs(deltaRotation);
+        }
+            
+            get('lines').setAttribute('transform',
+                'translate(' + xTranslate + ' ' + yTranslate + ') rotate(' + rotation + ' 100 100)');
+            
+            get('ball').setAttribute('transform',
+                'translate(' + xTranslate + ' ' + yTranslate + ')');
+            
+        }
+            
+        
+
+    </script>
+</body>
+</html>

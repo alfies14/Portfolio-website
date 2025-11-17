@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    September 14, 2021
+    SVCTE Mobile Apps
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Tic Tac Toe</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+
+    /* styles go here */
+    div#nav img{
+                width: 30px;
+                padding: 15px;
+                background-color:darkorange;
+                margin: 0 4px;
+                border-radius: 10px;
+            }    
+    div#board{
+        width: 265px;
+        margin: 1em auto;
+        text-align: center;
+    }
+    div#board button{
+        width: 72px;
+        height: 72px;
+        margin: 8px 6px;
+        background-color: darkorange;
+        border: none;
+        font-size: 42px;
+        color: blue;
+    }
+    body{
+       background-color: darkorchid;
+        font-family: "Rooney", "Comic Sans MS", sans-serif; text-align: center;
+    }
+    p,h1{
+        color: orange;
+    }
+    h1{
+        font-size: 38px;
+    }
+    p{
+        font-size: 20px;
+    }
+    button#newgame{
+        background-color: darkorange;
+        color: white;
+        border: none;
+        width: 100px;
+        height: 48px;
+        border-radius: 8px;
+        
+    }
+    @media screen and (min-width: 500px){
+        div#board {
+            width: 450px;
+        }
+        div#board button {
+            width: 130px;
+            height: 130px;
+            font-size: 72px;
+        }
+    }
+    @media screen and (min-width:750px){
+        div#board{width: 580px;}
+        div#board #button{
+            width: 200px; 
+            height: 200px;
+            font-size: 112px;}
+    }
+    footer{
+        padding-top: 30px;
+        color: white;
+    }
+
+        
+    
+            
+        
+
+ 
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <!-- page content will go here -->
+    <p id="message">Player X up first!</p>
+    <div id="board">
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    </div>
+    <button id="newgame">New Game</button>
+    <div id="case">
+        <p><b>Objective:</b>
+            Create a functioning Tic Tac Toe game.
+        </p>
+        <p><b>Problem:</b>
+            Make it easy to play  a game.
+        </p>
+        <p><b>Solution:</b>
+            We made the switch between Player X and O very seamless.  Button to reset the game on a tie. Then text telling you who’s turn it was and whether someone won.
+        </p>
+    </div>
+    <div id="nav">
+        <a href=".">
+            <img src="navicons/black-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="navicons/black-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="navicons/black-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+    <footer>Copyright&copy; 2021 Alfredo Rodriguez</footer>
+    <script type='text/javascript'>
+    // scripts will go here
+        // To do list: Put a Letter on the button when clicked
+        // 1.Put a Letter on the button when clicked
+        // 2.switch bewtween players
+        // 3.Make it so someone wins
+        // 4. what if nobody onedf
+        // 5. Reset the game
+
+        var buttons = document.getElementById("board").
+            getElementsByTagName("button");
+        var player = "X";
+        var winningCombos= [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [2,4,6],
+        [0,4,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        
+
+        ];
+        var gameOver = false;
+    
+
+
+            setupClickHandlers();
+
+            function setupClickHandlers(){
+                for(var i=0; i<buttons.length; i++){
+                    buttons[i].onclick = boardButtonClicked;
+                }
+                document.getElementById("newgame").onclick = startNewGame;
+            }
+            
+            function startNewGame(){
+                gameOver = false;
+                clearboard();
+            }
+            function clearboard(){
+                for(var i=0; i<buttons.length; i++){
+                    buttons[i].innerHTML = "&nbsp";
+
+                }
+            }
+            
+            
+            function boardButtonClicked(e){
+                if(e.currentTarget.innerHTML != "&nbsp;"){
+                    return;
+                }
+                if (gameOver){
+                    return;
+                }
+            
+                e.currentTarget.textContent = player;
+                if(didWin(player)){
+
+                    document.getElementById("message").textContent =
+                    "Player " + player + " Wins!";
+                    gameOver = true;
+                }
+                if(isTieGame(player)){
+                    document.getElementById("message").textContent=
+                    "Draw :-[";
+                    gameOver = true;
+                }
+              
+                if( player == "X"){
+                    player = "O";
+                }
+                else {
+                    player = "X";
+                }
+                if(!gameOver){
+                     document.getElementById("message").textContent=
+                     "Player " + player + " up next!";
+                }
+            }
+            function isTieGame(player){
+                
+                return !didWin(player) && boardIsFull();
+            }
+            function boardIsFull(){
+                for(var i=0; i<buttons.length; i++){
+                    if(buttons[i].innerHTML == "&nbsp;"){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            function didWin(player){
+                for(var i=0;i<winningCombos.length;i++){
+                    var set =winningCombos[i];
+                    var button1 =buttons[set[0]];
+                    var button2 =buttons[set[1]];
+                    var button3 =buttons[set[2]];
+                    if(button1.textContent == player &&
+                        button2.textContent == player &&
+                        button3.textContent == player) {
+                            return true;
+                        }
+                    
+                }
+                return false;
+            }
+            // if(){
+            // location.reload();
+            
+            // }
+    </script>
+</body>
+</html>

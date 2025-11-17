@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    October 28
+    svcte mobile apps
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Random Circle</title>
+    <style type='text/css'>
+    /* styles go here */
+    @import "portfolio.css";
+    div#nav img{
+                width: 30px;
+                padding: 15px;
+                background-color:#d7c49eff ;
+                margin: 0 4px;
+                border-radius: 10px;
+            }    
+    
+    body{
+            text-align: center; font-family: sans-serif; background-color: #343148ff;
+        }
+        h1, footer{
+            color:#d7c49eff;
+        }
+        input[type=range]{
+            width: 300px;
+            position: relative;
+            top: 4px;
+        }
+        label{ width: 140px; display: inline-block; text-align: right;}
+        
+        span {width:40px; display: inline-block; text-align: right;}
+        
+        div#controls{padding: 8px 0;
+        width: 620px;
+        margin: 16px auto;
+        background-color: #d7c49eff;
+        
+        }
+        svg{
+            border: 10px solid #d7c49eff;
+        }
+        div#case p  {
+    color: #d7c49eff;
+}
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Random Circles</h1>
+    <svg width='600' height='400' viewBox='0 0 600 400'
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+            <!-- the clipping paths and masks will go here -->
+
+            <defs>
+            </defs>
+
+            <!-- the shapes and stuff will go here -->
+
+            <rect x='0' y='0' width='600' height='400' fill='wheat' />
+
+        <!-- <circle cx='200' cy='190' r='47' fill='red'/> -->
+        
+        <g id="circles">
+
+        </g>
+
+        </svg>
+
+
+        <div id="controls">
+        <p>
+            <label>Number of Circles:</label>
+           
+            <input type="range" min="1" max="200" value="100"
+                id="numberofcircles"/>
+            <span id='numberreadout'>100</span>
+        </p>
+        <p>
+            <label>Maximum Radius:</label>
+            <input type="range" min="5" max="200" value="100"
+                id="changeradius"/>
+            <span id='numberreadout2'>100</span>
+        </p>
+        <p>
+            <label>Maximum Opacity:</label>
+            <input type="range" min="0" max="100" value="50"
+                id="changeopacity"/>
+
+            <span id='numberreadout3'>50</span>
+                
+        </p>
+        
+            <button id='newpattern'>New Pattern</button>
+        </div>
+        <div id="case">
+            <p><b>Objective:</b>
+                Create a website that allowed you to play around with circles.
+            </p>
+            <p><b>Problem:</b>
+                How can we make it interact for users.
+
+            </p>
+            <p><b>Solution:</b>
+                We set up sliders so we can be able to interact and freely change the circles.
+
+            </p>
+        </div>
+        <div id="nav">
+            <a href=".">
+                <img src="navicons/black-arrow-left.svg" alt="previous"/>
+            </a>
+            <a href=".">
+                <img src="navicons/black-house.svg" alt="home"/>
+            </a>
+            <a href=".">
+                <img src="navicons/black-arrow-right.svg" alt="next"/>
+            </a>
+        </div>
+    <footer>Copyright &copy; Alfredo Rodriguez 2021</footer>
+    <script type='text/javascript'>
+    // scripts will go here
+
+
+        function get(id){
+            return document.getElementById(id)
+        }
+        var circles = document.getElementById('circles');
+        
+        get('newpattern').onclick = drawCircles; 
+        get('numberofcircles').oninput = changeNumber;
+        get('changeradius').oninput= changeRadius;
+        get('changeopacity').oninput= changeOpacity;
+
+
+        circles.innerHTML +=
+        "<circle cx='400' cy='50' r='17' fill='#ee7000' />";
+
+        var svgWidth = 600;
+        var svgHeight = 400;
+        var maximumRadius = 200;
+        var numberOfCircles = 100;
+        var maximumOpacity = 0.5;
+
+        drawCircles();
+
+        function changeNumber(){
+            numberOfCircles= get('numberofcircles').value;
+            get('numberreadout').innerHTML= numberOfCircles;
+            drawCircles();
+        }
+    function changeRadius(){
+        maximumRadius = get('changeradius').value;
+        get('numberreadout2').innerHTML= maximumRadius;
+        drawCircles();
+    }
+    function changeOpacity(){
+        maximumOpacity = get('changeopacity').value;
+        get('numberreadout3').innerHTML= maximumOpacity;
+        maximumOpacity /= 100;
+        drawCircles();
+    }
+        
+    function drawCircles(){
+        get('circles').innerHTML= "";
+        for(var i=0; i<numberOfCircles; i++){
+            drawOneCircle();
+        }
+
+    }
+    function drawOneCircle(){
+        var x = random(0,svgWidth);
+        var y = random(0,svgHeight);
+        var r = random(5,maximumRadius);
+        var c = makeOneRandomColor();
+        var opacity =Math.random() * maximumOpacity;
+        console.log(x,y,r,c);
+        // "<circle cx='400' cy='50' r='17' fill='#ee7000' />"
+        circles.innerHTML +=
+        "<circle cx='" + x +
+        " ' cy=' " + y +
+        " ' r=' " + r +
+        " ' fill=' " + c +
+        " ' fill-opacity=' " + opacity +
+        "' />";
+    }
+
+    function random(min,max){
+        var r = Math.random();
+        return min + r * (max-min);
+    }
+    function makeOneRandomColor(){
+            var myString = "#";
+            for(var i=0;i<6;i++){
+                myString +=makeOneRandomHexDigit();
+            }
+        
+            
+            return myString;
+        }
+        function makeOneRandomHexDigit(){
+            var hexDigits = "0123456789ABCDEF";
+            var which = Math.floor(hexDigits.length * Math.random());
+            return hexDigits[which];
+        }
+    </script>
+</body>
+</html>

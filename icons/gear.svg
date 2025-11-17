@@ -1,0 +1,66 @@
+<svg width='600' height='600' viewBox='0 0 600 600'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+    <!-- alfredo rodriguez
+    october 22 2021 -->
+
+    <defs>
+    <mask id='gray'>
+    <rect x='0' y='0' width='600' height='600' fill='white' />
+    <circle cx='300' cy='300' r='187.5' fill='black'/>
+    </mask>
+    <linearGradient x1='0' y1='0' x2='0' y2='1' id='grand' >
+    <stop offset='0' stop-color='#eeeeee'/>
+    <stop offset='1' stop-color='#8E9295'/>
+    </linearGradient>
+    <linearGradient x1='0' y1='0' x2='0' y2='1' id='inner' >
+    <stop offset='0' stop-color='#353839'/>
+    <stop offset='1' stop-color='black'/>
+    </linearGradient>
+ 
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' rx='100' ry='100' width='600' height='600' fill='url(#grand)' />
+    
+    <circle cx='300' cy='300' r='265' fill='url(#inner)'/>
+
+    <!-- <circle cx='200' cy='200' r='50' fill='red'/> -->
+<use xlink:href='#firstgear' transform='translate(120 120) scale(0.6)' fill-opacity='0.6'/>
+<g id='firstgear'>
+    <g id='master18'>
+        <g id='master6'>
+            <g id='master2'>
+                <polygon points=' 
+                296 50
+                304 50
+                308 90
+                292 90
+                z' fill='silver' id='master' />
+                <use xlink:href='#master' transform='rotate(180 300 300)'/>
+            </g>
+            <use xlink:href='#master2' transform='rotate(60 300 300)'/>
+            <use xlink:href='#master2' transform='rotate(120 300 300)'/>
+        </g>
+        <use xlink:href='#master6' transform='rotate(20 300 300)'/>
+        <use xlink:href='#master6' transform='rotate(40 300 300)'/>
+    </g>
+    <use xlink:href='#master18' transform='rotate(6.66 300 300)'/>
+    <use xlink:href='#master18' transform='rotate(13.33 300 300)'/>
+  
+    <circle cx='300' cy='300' r='210.5' fill='silver' mask='url(#gray)'/>
+</g>
+
+
+
+  <rect x='300' y='285' width='200' height='30' fill='silver' id='crossbar' stroke-linecap='round'/>
+    <use xlink:href='#crossbar' transform='rotate(120 300 300)'/>
+    <use xlink:href='#crossbar' transform='rotate(240 300 300)'/>
+
+<circle cx='300' cy='300' r='30' fill='silver'/>
+    <circle cx='300' cy='300' r='10' fill='url(#inner)'/>
+
+</svg>

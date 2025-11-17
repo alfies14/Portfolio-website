@@ -1,0 +1,37 @@
+<svg width='200' height='200' viewBox='0 0 200 200'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+    <clipPath id='clip'>
+    <circle cx='100' cy='100' r='50'/>
+    </clipPath>
+
+
+    <radialGradient cx='30%' cy='30%' r='70%' id='orangeg'>
+        <stop offset='0' stop-color='#FFD3A7'/>
+        <stop offset='1' stop-color='#ee7700'/>
+    </radialGradient>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='200' height='200' fill='#A7D3FF' />
+
+<g id='ball' clip-path='url(#clip)'>
+    <circle cx='100' cy='100' r='50' fill='url(#orangeg)'/>
+    <polyline points='
+        100 0
+        100 200
+    ' stroke='black'/>
+    <polyline points='
+        0 100
+        200 100
+    ' stroke='black'/>
+
+    <circle cx='25' cy='100' r='50' fill='none' stroke='black'/>
+    <circle cx='175' cy='100' r='50' fill='none' stroke='black'/>
+</g>
+</svg>

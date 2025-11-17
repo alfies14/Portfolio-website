@@ -1,0 +1,79 @@
+<svg width='600' height='600' viewBox='0 0 600 600'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+    <!-- Alfredo Rodriguez
+        October 25 
+        Svcte mobile apps -->
+
+    <defs>
+    <mask id='gmask'>
+        <rect x='0' y='0' width='600' height='600' fill='white' />
+        <circle cx='300' cy='300' r='150' stroke-width='3' fill='black' /> 
+
+        <polygon points='
+        600 0
+        300 300
+        600 300 z' fill='black' stroke-width='3'
+         />
+    </mask>
+
+<clipPath id='redclip'>
+        <rect x='0' y='0' width='600' height='300'/>
+
+    </clipPath>
+    
+<clipPath id='greenclip'>
+        <polygon points='
+            0 125
+            0 600
+            620 600
+            z'
+        />
+    </clipPath>
+<clipPath id='goldclip'>
+        <polygon points='
+            0 475
+            0 0
+            620 0
+            z'
+        />
+        
+</clipPath>
+
+<clipPath id='crossbar'>
+        <rect  x='300' y='250' height='100' width='400'/>
+</clipPath>
+
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='600' height='600' fill='none' />
+
+    <!-- The G -->
+    <g transform='scale(1.1) translate(-25 -10)'>
+        <circle cx='300' cy='300' r='250' stroke-width='3' fill='#4285F4'  
+        mask='url(#gmask)'/> 
+        <circle cx='300' cy='300' r='250' stroke-width='3' fill='#EA4335'  
+        mask='url(#gmask)' clip-path='url(#redclip)'/> 
+        <circle cx='300' cy='300' r='250' stroke-width='3' fill='#34A853'  
+        mask='url(#gmask)' clip-path='url(#greenclip)'/> 
+        
+        <g clip-path='url(#goldclip)'>
+            <circle cx='300' cy='300' r='250' stroke-width='3' fill='#FBBC05'  
+            mask='url(#gmask)' clip-path='url(#greenclip)'/> 
+        </g>
+
+        <circle cx='300' cy='300' r='250' stroke-width='3' fill='#4285F4'  
+        clip-path='url(#crossbar)'/> 
+    </g>
+
+    
+    
+    
+   
+
+
+</svg>

@@ -1,0 +1,19 @@
+<svg width='120' height='120' viewBox='0 0 120 120'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    
+   <rect x='0' y='0' width='120' height='24' fill='#1FD01C' />
+    <rect x='0' y='45' width='120' height='24' fill='#1FD01C' />
+     <rect x='0' y='90' width='120' height='24' fill='#1FD01C' />
+
+
+
+</svg>

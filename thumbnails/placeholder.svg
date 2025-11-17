@@ -1,0 +1,44 @@
+<svg width='400' height='400' viewBox='0 0 400 400'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+
+    <defs>
+        <mask id='m'>
+            <rect x='0' y='0' width='400' height='400' fill='white' />
+            <polygon points='100 200 180 180
+                             200 100 220 180
+                             300 200 220 220
+                             200 300 180 220 z'
+                     fill='black' 
+                     stroke='black'
+                     stroke-width='20' 
+                     transform='rotate(45 200 200)' />
+        </mask>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='400' height='400' fill='darkblue' />
+    
+    <g transform="translate(-100 -100) scale(1.5)" >
+    <polygon points='100 200 180 180
+                     200 100 220 180
+                     300 200 220 220
+                     200 300 180 220 z'
+             fill='deepskyblue' mask='url(#m)' />
+
+    <polygon points='100 200 180 180
+                     200 100 220 180
+                     300 200 220 220
+                     200 300 180 220 z'
+             fill='deepskyblue' 
+             transform='rotate(45 200 200)' />
+    </g>
+</svg>
+
+
+
+
+

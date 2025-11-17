@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    November 8th 2021
+    Svcte Mobile apps    
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Color Tiles</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+body{
+    text-align: center; font-family: "Verdana", sans-serif; background-color: wheat;
+}
+label{
+    width: 130px; display: inline-block; text-align: right; margin-top: 2px;
+}
+footer{
+    padding-top: 2em;
+}
+div#case p  {
+    color: purple;
+}
+    </style>
+    <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Tiles</h1>
+
+    <p>
+        <label>Square Size:</label>
+        <input type="text" id="squaresize" value="40"/>
+    </p>
+   
+    <p>
+        <label>Squares across:</label>
+        <input type='text' id='squareacross' value="15"/>
+    </p>
+    
+    <p>
+        <button id='submit'>Redraw</button>
+    </p>
+
+
+<svg width='600' height='400' viewBox='0 0 600 400'
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+        <!-- the clipping paths and masks will go here -->
+
+        <defs>
+        </defs>
+
+        <!-- the shapes and stuff will go here -->
+
+        <rect x='0' y='0' width='600' height='400' fill='beige' />
+    <g id='titles'>
+
+
+    </g>
+
+</svg>
+<div id="case">
+    <p><b>Objective:</b>
+        Create a website that could randomly generate colorful cubes. 
+
+    </p>
+    <p><b>Problem:</b>
+        It was a rectangle of different cubes and we weren't able to manipulate the cubes.
+
+    </p>
+    <p><b>Solution:</b>
+        In order to make it more interactive, we added a slider to change the numbers of cubes in Horizontal and Vertical direction.  Affecting the size of cubes depending on the input.
+
+    </p>
+</div>
+<div id="nav">
+    <a href=".">
+        <img src="navicons/white-arrow-left.svg" alt="previous"/>
+    </a>
+    <a href=".">
+        <img src="navicons/white-house.svg" alt="home"/>
+    </a>
+    <a href=".">
+        <img src="navicons/white-arrow-right.svg" alt="next"/>
+    </a>
+</div>
+    <footer>Copyright&copy; 2021 Alfredo Rodriguez</footer>
+
+    <script type='text/javascript'>
+    // scripts will go here
+    function get(id){
+        return document.getElementById(id);
+    }
+    
+    var size = 40;
+
+    get('submit').onclick = redraw;
+    get('squaresize').oninput = setToAcross;
+    get('squareacross').oninput = acrossToSize;
+
+    function setToAcross(){
+        let size = parseFloat(get('squaresize').value);
+        get('squareacross').value = 600/ size;
+    }
+    function acrossToSize(){
+        let across = parseFloat(get('squareacross').value);
+        get('squaresize').value = 600/ across;
+    }
+
+    function redraw(){
+        size = parseFloat(get('squaresize').value);
+        drawTitles();
+    }
+
+    drawTitles();
+    function drawTitles(){
+        var temp= "";
+        for(var x=0; x<600; x+=size){
+            for(var y=0; y<400; y+=size){
+                // var fillColor='green';
+                // if((x+y) % (2*size)== 0){
+                //     fillColor='black';
+                // }
+                var fillColor= makeOneRandomColor();
+                // get('titles').innerHTML += 
+                temp +=
+                "<rect x='" + x +
+                "' y='" + y +
+                "' width='" + (size-1) +
+                "' height='" + (size-1) +
+                "' fill='" + fillColor + "' />";
+            }
+        }
+        get('titles').innerHTML = temp;
+        
+    }
+    function makeOneRandomColor(){
+            var myString = "#";
+            for(var i=0;i<6;i++){
+                myString +=makeOneRandomHexDigit();
+            }
+        
+            
+            return myString;
+        }
+        function makeOneRandomHexDigit(){
+            var hexDigits = "0123456789ABCDEF";
+            var which = Math.floor(hexDigits.length * Math.random());
+            return hexDigits[which];
+        }
+
+    </script>
+
+</body>
+</html>

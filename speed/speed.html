@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    November 5th
+    SVCTE MOBILE APPS
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Speed-o-meter</title>
+    <style type='text/css'>
+    @import "../portfolio.css";
+    /* styles go here */
+        body{
+            text-align: center; font-family: Georgia, sans-serif; background-color: black	;
+        }
+        footer,h1,span,text{
+            color: white;
+        }
+
+    </style>
+    <script src="../navigation.js"></script>
+</head>
+
+<body>
+    <h1>Speed-o-meter</h1>
+<svg width='600' height='400' viewBox='0 0 600 400'
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+        <!-- the clipping paths and masks will go here -->
+
+        <defs>
+            <radialGradient id='red' cx='40%' cy='40%' r='70%'>
+                <stop offset='0' stop-color='#ff3333'/>
+                <stop offset='1' stop-color='#f00000'/>
+            </radialGradient>
+
+        </defs>
+
+        <!-- the shapes and stuff will go here -->
+
+            <rect x='0' y='0' width='600' height='400' fill='#161b21' />
+            
+        <g id='master3'>
+            <g id='master'>
+                <polyline points=
+                '300 50 300 75' stroke='#0E6EDF' stroke-width='6' id="long"/>
+                <polyline points=
+                '300 50 300 67.5' stroke='#f4a950' stroke-width='4' id="short" transform='rotate(4 300 240)'/>
+                <use xlink:href='#short' transform='rotate(4 300 240)'/>
+                <use xlink:href='#short' transform='rotate(8 300 240)'/>
+                <use xlink:href='#short' transform='rotate(12 300 240)'/>
+            </g>
+                <use xlink:href='#master' transform='rotate(20 300 240)'/>
+                <use xlink:href='#master' transform='rotate(40 300 240)'/>
+        </g>
+                <use xlink:href='#master3' transform='rotate(60 300 240)'/>
+                <use xlink:href='#master3' transform='rotate(-60 300 240)'/>
+                <use xlink:href='#master3' transform='rotate(-120 300 240)'/>
+                <use xlink:href='#long' transform='rotate(120 300 240)'/>
+
+        <g font-family='Georgia' font-size='20' fill='#f4a950' text-anchor='middle'>
+            <text x='300' y='102.5' transform='rotate(-120 300 240) rotate(120 300 95)'>0</text>
+            <text x='300' y='102.5' transform='rotate(-100 300 240) rotate(100 300 95)'>10</text>
+            <text x='300' y='102.5' transform='rotate(-80 300 240) rotate(80 300 95)'>20</text>
+            <text x='300' y='102.5' transform='rotate(-60 300 240) rotate(60 300 95)'>30</text>   
+            <text x='300' y='102.5' transform='rotate(-40 300 240) rotate(40 300 95)'>40</text>
+            <text x='300' y='102.5' transform='rotate(-20 300 240) rotate(20 300 95)'>50</text>
+            <text x='300' y='102.5'>60</text>
+            <text x='300' y='102.5' transform='rotate(20 300 240) rotate(-20 300 95)'>70</text>
+            <text x='300' y='102.5' transform='rotate(40 300 240) rotate(-40 300 95)'>80</text>
+            <text x='300' y='102.5' transform='rotate(60 300 240) rotate(-60 300 95)'>90</text>
+            <text x='300' y='102.5' transform='rotate(80 300 240) rotate(-80 300 95)'>100</text>
+            <text x='300' y='102.5' transform='rotate(100 300 240) rotate(-100 300 95)'>110</text>
+            <text x='300' y='102.5' transform='rotate(120 300 240) rotate(-120 300 95)'>120</text>
+        </g>
+            
+        <circle cx='300' cy='240' r='20' fill='url(#red)'/>
+    <g id='needle'>
+        <polygon points='
+        299 50
+        300 50
+        300 280
+        290 280
+        ' fill='#f00000'/>
+        <polygon points='
+        301 50
+        300 50
+        300.5 280
+        310 280
+        ' fill='#f00000'/>
+    </g>
+    <text x='285' y='300' stroke='#0E6EDF'>Mph</text>
+</svg>
+    <p>
+        
+        <span id='readout'></span><span> Mph</span>
+    </p>
+    <button id='change'>Change Speed</button>
+    <div id="case">
+        <p><b>Objective:</b>
+            We wanted to make a speedometer that told speed.
+
+    
+        </p>
+        <p><b>Problem:</b>
+            How to Not very fun using it watching the needle change numbers
+            show off my creation in a concise way
+    
+        </p>
+        <p><b>Solution:</b>
+            Add an engine revving sound when you press the button to generate a new MPH button.  So it mimics car sounds.
+
+    
+    
+        </p>
+    </div>
+    <div id="nav">
+
+        <a href=".">
+            <img src="../navicons/white-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="../navicons/white-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="../navicons/white-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+    <footer>Copyright&copy;2021 Alfredo Rodriguez</footer>
+    <script type='text/javascript'>
+    // scripts will go here
+
+    function get(id){
+        return document.getElementById(id);
+    }
+    var currentAngle = 0;
+    var targetAngle = 0;
+    var deltaAngle = 1;
+
+    // get('needle').setAttribute('transform', 'rotate(-120 300 240)');
+
+    get('change').onclick = changeSpeed;
+
+    function changeSpeed(){
+        var engine = new Audio("engine.mp3");
+        engine.play();
+        var newSpeed = Math.round(120 * Math.random());
+        get('readout').textContent = newSpeed;
+        targetAngle = 2 * newSpeed - 120;
+        if(currentAngle < targetAngle){
+            deltaAngle = 2;
+        }
+        else{
+            deltaAngle = -2;
+        }
+        startMovement();
+    }
+    function startMovement(){
+            if(currentAngle == targetAngle){
+                return;
+            }
+            currentAngle += deltaAngle;
+            get('needle').setAttribute('transform', 'rotate(' + currentAngle + ' 300 240)');
+            setTimeout(startMovement,35);
+        }
+    </script>
+</body>
+</html>

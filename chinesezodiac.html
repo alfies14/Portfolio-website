@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Alfredo Rodriguez
+    September 7 2021
+    Mobile Apps Design
+
+    -->
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Chinese Zodiac</title>
+    <style type='text/css'>
+    @import "portfolio.css";
+    table#zodiac {
+        border-collapse: collapse;
+        width: 90%;
+        max-width: 800px;
+        margin: 1em auto;
+    }
+    table#zodiac td, table#zodiac th {
+        border: 1px solid rgb(172, 74, 74);
+        width: 8.33%;
+        text-align: center;
+        padding: 6px;
+        background-color: pink;
+    }
+    table#zodiac th {
+        background-color: plum;
+    }
+    body{
+        text-align: center; background-color: maroon; font-family: sans-serif;
+    }
+    h1{
+        color: pink; font-weight: normal; letter-spacing: 2px;
+    }
+    div#userinput{
+        background-color:pink;
+        padding: 6px 0;
+        border: 1px solid maroon;
+        width: 800px;
+        margin: 1em auto;
+        
+        
+    }
+    input#year{
+        width: 5em; 
+    }
+    div#userinput * {
+        margin: 0 4px;
+    }
+    span#result{
+        width: 16em;
+        display: inline-block;
+        text-align: left;
+    }
+    footer{
+        color: linen; padding-top: 10px; margin-top: 100px;
+    }
+    </style>
+   <script src="navigation.js"></script>
+</head>
+
+<body>
+    <h1>Chinese Zodiac</h1>
+    <!-- page content will go here -->
+    <div id="userinput">
+        Year:
+        <input type="text" placeholder="1948" id="year"/>
+        <button id="lookup">lookup</button>
+        <span id="result">&nbsp;</span>
+
+    </div>
+    
+    
+    <Table id="zodiac">
+
+    </Table>
+    <script type='text/javascript'>
+    // scripts will go here
+        var animals = [
+            "Rat","Ox","Tiger",
+            "Rabbit","Dragon","Snake",
+            "Horse","Sheep","Monkey",
+            "Rooster","Dog","Pig",
+        ];
+       
+        var startYear = 1948;
+        var endYear = 2031;
+
+        function get(id){
+            return document.getElementById(id);
+        }
+        
+        function drawTable(){
+            var contents = " ";
+            contents += addAnimals();
+            contents += addYears();
+            get("zodiac").innerHTML = contents;
+
+        }
+        drawTable();
+
+        function addAnimals(){
+        var animalsRow = " ";
+        animalsRow += "<tr>";
+            for(var i=0; i<animals.length;i++){
+                animalsRow += "<th>" + animals[i] + "</th>";
+            } 
+            animalsRow += "</tr>\n";
+            return animalsRow;
+        }
+        function addYears(){
+            var yearRows = " ";
+            for(var rowStart=startYear; rowStart<=endYear; rowStart+=12 ){
+                // rowStart += 12
+                // rowStart = rowStart + 12
+                yearRows +="<tr>";
+                for(var column=0; column < 12; column++){
+                  yearRows += "<td>" + (rowStart + column)+ "</td>";
+
+                }
+                yearRows+= "</tr>\n";
+            }
+            return yearRows;
+
+        }
+        get("lookup").onclick = lookupYear;
+
+        function lookupYear(){
+            var year = parseInt(get("year").value);
+            var index = ((year % 12)+8) % 12;
+            var animal = animals[index];
+            get("result").textContent =
+            year + " is the year of the " + animal;
+
+        }
+    </script>
+    <div id="case">
+        <p><b>Objective:</b>
+            Website to look up what chinese zodiac we are
+        </p>
+        <p><b>Problem:</b>
+            Were unable to list all zodiacs for every year
+        </p>
+        <p><b>Solution:</b>
+            Create an input that allows the user to know their zodiac no matter what year they put it.
+        </p>
+    </div>
+    <div id="nav">
+        <a href=".">
+            <img src="navicons/white-arrow-left.svg" alt="previous"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-house.svg" alt="home"/>
+        </a>
+        <a href=".">
+            <img src="navicons/white-arrow-right.svg" alt="next"/>
+        </a>
+    </div>
+    <footer>Copyright &copy; Alfredo Rodriguez 2021</footer>
+</body>
+</html>

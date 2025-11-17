@@ -1,0 +1,129 @@
+<svg width='600' height='600' viewBox='0 0 600 600'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- the clipping paths and masks will go here -->
+    <!-- Alfredo Rodriguez
+    October 22 2021
+    Svcte Mobile apps -->
+
+    <defs>
+    <linearGradient x1='0' y1='0' x2='1' y2='1' id='silver' >
+        <stop offset='0' stop-color='#B6B6B6'/>
+        <stop offset='1' stop-color='silver'/>
+    </linearGradient>
+    <linearGradient x1='0' y1='0' x2='1' y2='1' id='white' >
+        <stop offset='0' stop-color='white'/>
+        <stop offset='1' stop-color='#F1F1F1'/>
+    </linearGradient>
+    <linearGradient x1='0' y1='0' x2='1' y2='1' id='red' >
+        <stop offset='0' stop-color='red'/>
+        <stop offset='1' stop-color='#C13D3D'/>
+    </linearGradient>
+    <linearGradient x1='0' y1='0' x2='1' y2='1' id='lightred' >
+        <stop offset='0' stop-color='red'/>
+        <stop offset='1' stop-color='#FF5150'/>
+    </linearGradient>
+   <linearGradient x1='0.1' y1='0' x2='0.5' y2='1' id='greyc' >
+        <stop offset='0' stop-color='white'/>
+        <stop offset='1' stop-color='#B6B6B6'/>
+    </linearGradient>
+    <radialGradient cx='50%' cy='42.5%' r='65%' id='blue'>
+        <stop offset='0' stop-color='#00dddd'/>
+        <stop offset='1' stop-color='#1144ff'/>
+    </radialGradient>
+    <mask id='mask'>
+            <g id='master16'>
+            <g id='master8'>
+                <g id='master4'>
+                    <g id='master2'>
+                        <g id='master'>
+                        <polyline points='
+                        300 50
+                        300 95
+                        ' stroke='white' stroke-width='7' stroke-linecap='round' fill='white'/>
+                        <polyline points='300 50 300 72' stroke='white' stroke-linecap='round' stroke-width='7' 
+                        transform='rotate(5.625 300 300)' fill='white'/>
+                        </g>
+                        <use xlink:href='#master' transform='rotate(180 300 300)'/>
+                    </g>
+                    <use xlink:href='#master2' transform='rotate(90 300 300)'/>
+                </g>
+                <use xlink:href='#master4' transform='rotate(45 300 300)'/>
+                </g>
+            <use xlink:href='#master8' transform='rotate(22.5 300 300)'/>
+            </g>
+        <use xlink:href='#master16' transform='rotate(11.25 300 300)'/>
+
+    </mask>
+
+
+
+    </defs>
+
+
+
+
+  
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='600' height='600' fill='none' />
+    
+    <circle cx='300' cy='300' r='290' fill='url(#greyc)'/>
+
+    <circle cx='300' cy='300' r='265' fill='url(#blue)'/>
+    
+    <circle cx='300' cy='300' r='265' fill='url(#greyc)' mask='url(#mask)'/>
+
+ <!-- <g id='master16'>
+    <g id='master8'>
+        <g id='master4'>
+            <g id='master2'>
+                <g id='master'>
+                <polyline points='
+                300 50
+                300 95
+                ' stroke='white' stroke-width='7' stroke-linecap='round'/>
+                <polyline points='300 50 300 72' stroke='white' stroke-linecap='round' stroke-width='7' 
+                transform='rotate(5.625 300 300)'/>
+                </g>
+                <use xlink:href='#master' transform='rotate(180 300 300)'/>
+            </g>
+            <use xlink:href='#master2' transform='rotate(90 300 300)'/>
+        </g>
+        <use xlink:href='#master4' transform='rotate(45 300 300)'/>
+        </g>
+     <use xlink:href='#master8' transform='rotate(22.5 300 300)'/>
+    </g>
+<use xlink:href='#master16' transform='rotate(11.25 300 300)'/> -->
+
+<polygon points='
+    300 50 
+    255 300 
+    300 550 
+    345 300 z
+' fill='gray' transform='translate(1 1)rotate(43.5 310 315)' fill-opacity='0.3'/>
+
+<g transform='rotate(43.5 300 300)'>
+    <polygon points='
+        301 300
+        301 50
+        255 300 z
+        ' fill='url(#lightred)'/>
+    <polygon points='
+        300 300
+        300 50
+        345 300 z
+        ' fill='url(#red)'/>
+     <polygon points='
+        301 300
+        301 550
+        255 300 z
+        ' fill='url(#white)'/>
+     <polygon points='
+        300 300
+        300 550
+        345 300 z
+        ' fill='url(#silver)'/>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg width='400' height='400' viewBox='0 0 400 400'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- Alfredo Rodriguez
+        October 22 2021
+        Svcte mobile apps -->
+
+    <defs>
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='400' height='400' fill='none' />
+
+<g transform='translate(0 15)'>
+    <polygon points='
+    200 225
+    90 360
+    310 360 z 
+    ' fill='steelblue' id='master'/>
+    <use xlink:href='#master' transform='rotate (72 200 200)'/>
+    <use xlink:href='#master' transform='rotate (144 200 200)'/>
+    <use xlink:href='#master' transform='rotate (216 200 200)'/>
+    <use xlink:href='#master' transform='rotate (288 200 200)'/>
+</g>
+</svg>

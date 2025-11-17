@@ -1,0 +1,268 @@
+<svg width='600' height='800' viewBox='0 0 600 800'
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink= "http://www.w3.org/1999/xlink">
+
+    <!-- Alfredo Rodriguez
+         15 October 2021
+         Svcte mobile apps -->
+
+    <defs>
+    <radialGradient cx='30%' cy='30%' r='60%' id='blueg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='#0063cc'/>
+    </radialGradient>
+    <radialGradient cx='30%' cy='30%' r='60%' id='redg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='#D90002'/>
+    </radialGradient>
+    <radialGradient cx='30%' cy='30%' r='60%' id='orangeg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='#E26700'/>
+    </radialGradient>
+    <radialGradient cx='30%' cy='30%' r='60%' id='greyg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='grey'/>
+    </radialGradient>
+    <linearGradient x1='0.45' y1='0.45' x2='0.55' y2='0.55' id='leftg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='black'/>
+    </linearGradient>
+    <linearGradient x1='0.55' y1='0.45' x2='0.45' y2='0.55' id='rightg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='black'/>
+    </linearGradient>
+    <linearGradient x1='0' y1='0' x2='1' y2='0.8' id='acrossg'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='black'/>
+</linearGradient>
+ <linearGradient x1='1' y1='1' x2='0' y2='0' id='across2g'>
+    <stop offset='0' stop-color='white'/>
+    <stop offset='1' stop-color='black'/>
+</linearGradient>
+
+
+
+
+
+
+    
+    </defs>
+
+    <!-- the shapes and stuff will go here -->
+
+    <rect x='0' y='0' width='600' height='800' fill='wheat' />
+    
+
+    <g stroke-width='8'>
+    <!-- Hexagon Lines -->
+    <polyline points='
+    375.0 486.6
+    300 443.3' stroke='url(#rightg)'/>
+
+     <!-- <polyline points='
+    300 443.3
+    300 356.7
+    ' stroke='purple'/> -->
+
+     <polyline points='
+    300 356.7
+    375 313.4
+    ' stroke='url(#leftg)'/>
+    
+    <polyline points='
+    375 313.4
+    450 356.7
+    ' stroke='url(#rightg)'/>
+    
+     <!-- <polyline points='
+    450 356.7
+    450 443.3
+    ' stroke='purple'/> -->
+     
+     <polyline points='
+    450 443.3
+    375 486.6
+    ' stroke='url(#leftg)'/>
+    
+     <!-- <polyline points='
+     375 313.4
+     375 226.8
+    ' stroke='purple'/> -->
+    
+    
+    <!-- Rectangle for middle double grey circles -->
+    <rect x='288' y='356.7' width='8' height='100' fill='url(#acrossg)'/>
+    <rect x='302' y='356.7' width='8' height='100' fill='url(#acrossg)'/>
+    <!-- Double Rectangle more south red cricle -->
+    <rect x='377' y='486.6' width='8' height='100' fill='url(#acrossg)'/>
+    <rect x='363' y='486.6' width='8' height='100' fill='url(#acrossg)'/>
+    <!-- Rectangle North -->
+    <rect x='370' y='226.8' width='8' height='100' fill='url(#acrossg)'/>
+    <!-- Rectangle on the middle right -->
+    <rect x='446' y='356.7' width='8' height='100' fill='url(#acrossg)'/>
+    <!-- Rectangle for Orange on far left -->
+     <rect x='80.4' y='395' width='8' height='100'  transform='rotate(-90 80.4 403)' fill='url(#across2g)'/>
+
+
+    
+    <!-- Double line NorthWest -->
+    <polyline points='
+        157.9 400.5 196.8 341.5
+    ' stroke='url(#leftg)' stroke-width='8'/>
+     <polyline points='
+        172.9 400.5 211.8 341.5
+    ' stroke='url(#leftg)' stroke-width='8'/>
+   
+   <!-- Double Line to Red NorthEast -->
+    <polyline points='
+     527 304.4 458 345.7
+    ' stroke='url(#leftg)'/>
+    <polyline points='
+     517 324.4 445 367.7
+    ' stroke='url(#leftg)'/>
+ 
+    
+
+   
+    <!-- Polygon lines -->
+      <polyline points='
+        217.8 330
+        300 356.7
+    ' stroke='url(#rightg)'/>
+    <polyline points='
+        300.0  443.3
+         217.8  470.0
+    ' stroke='url(#leftg)'/>
+    <polyline points='
+         217.8  470.0
+          166.9 400
+    ' stroke='url(#rightg)'/>
+     <polyline points='
+         217.8 470 
+         191.1 552.2
+    ' stroke='url(#leftg)'/>
+
+    
+<!--        Orange lines                   -->
+   <!-- Hexagon connected -->
+   <polyline points='
+         525 486.6
+         450 443.3
+    ' stroke='url(#rightg)'/>
+   
+
+    <!-- <polyline points='
+         80.4 400
+          166.9 400
+    ' stroke='orange'/> -->
+
+<!-- South orange connected to Grey -->
+<polyline points='
+135 554.5
+191.1 552.2
+' stroke='url(#acrossg)'/>
+<polyline points='
+191.1 552.2
+235 590
+' stroke='url(#rightg)'/>
+
+<!-- North orange connected to Grey -->
+<polyline points='
+375 226.8
+427 208.8
+
+' stroke='url(#leftg)'/>
+<polyline points='
+375 226.8
+323 208.8
+
+' stroke='url(#rightg)'/>
+
+
+
+
+
+<!--        Red Lines                        -->
+
+
+<!-- <polyline points='
+         525 313.4
+         450 356.7
+    ' stroke='url(#leftg)'/> -->
+    
+    <!-- <polyline points='
+         375 573.2
+         375 486.6
+    ' stroke='red'/> -->
+
+
+ </g>
+    <!--                Hexagon Circles                  -->
+        
+    <!-- South  -->
+    <circle cx='375' cy='486.6' r='25' fill='url(#greyg)'/>
+    
+    <!-- The Shared Circles of the Polygon and Hexagon -->
+    <circle cx='300' cy='443.3' r='25' fill='url(#greyg)'/>
+    <circle cx='300' cy='356.7' r='25' fill='url(#greyg)'/>
+
+    <!-- North  -->
+    <circle cx='375' cy='313.4' r='25' fill='url(#blueg)'/>
+
+    <!-- Northwest -->
+    <circle cx='450' cy='356.7' r='25' fill='url(#greyg)'/> 
+
+    <!-- Southwest -->
+    <circle cx='450' cy='443.3' r='25' fill='url(#blueg)'/>
+
+    <!-- Most North-->
+    <circle cx='375' cy='226.8' r='25' fill='url(#greyg)'/>
+
+
+    <!--              Polygon  circles                -->
+
+    <circle cx='166.9' cy='400' r='25' fill='url(#greyg)'/>
+
+    <circle cx='217.8' cy='330' r='25' fill='url(#blueg)'/>
+
+    <circle cx='217.8' cy='470' r='25' fill='url(#blueg)'/>
+    
+    <circle cx='191.1' cy='552.2' r='25' fill='url(#greyg)'/>
+    
+    <!--               Red circles                 -->
+    
+    <!-- South  -->
+    <circle cx='375' cy='573.2' r='25' fill='url(#redg)'/>
+
+    <!-- Northwest -->
+    <circle cx='525' cy='313.4' r='25' fill='url(#redg)'/>
+
+
+
+    <!--        Orange Circles           -->
+    
+    <!-- South East  -->
+    
+    <circle cx='525' cy='486.6' r='15' fill='url(#orangeg)'/>
+    
+    <!-- West -->
+    
+    <circle cx='80.3' cy='400' r='15' fill='url(#orangeg)'/>
+
+    <!-- Most South -->
+
+      <circle cx='185.1' cy='573.2' r='15' fill='url(#orangeg)'/>
+        <circle cx='135' cy='554.5' r='15' fill='url(#orangeg)'/>
+    <circle cx='235' cy='590' r='15' fill='url(#orangeg)'/>
+
+    <!-- Most North -->
+    <circle cx='376' cy='205.8' r='15' fill='url(#orangeg)'/>
+  <circle cx='427' cy='208.8' r='15' fill='url(#orangeg)'/>
+    <circle cx='323' cy='208.8' r='15' fill='url(#orangeg)'/>
+
+
+
+    <text x='300' y='125' font-size='40' text-anchor='middle' font-family='Futura'>Theobromine</text>
+     <text x='300' y='150' font-size='20' text-anchor='middle' font-family='Futura'>(Chocolate)</text>
+
+</svg>
