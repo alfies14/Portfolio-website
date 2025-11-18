@@ -34,10 +34,10 @@
                     <a href="https://www.linkedin.com/in/alfredo-rodriguez-flores-152462281/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">LinkedIn</a>
                     <div 
                         id="themeToggle"
-                        onclick="toggleTheme()" 
+                        onclick="if(typeof toggleTheme === 'function') { toggleTheme(); } else { const isDark = document.documentElement.classList.contains('dark'); document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); localStorage.setItem('portfolio-theme', isDark ? 'light' : 'dark'); }" 
                         role="button"
                         tabindex="0"
-                        onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleTheme(); }"
+                        onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); if(typeof toggleTheme === 'function') { toggleTheme(); } else { const isDark = document.documentElement.classList.contains('dark'); document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); localStorage.setItem('portfolio-theme', isDark ? 'light' : 'dark'); } }"
                         class="flex w-16 h-8 p-1 rounded-full cursor-pointer transition-all duration-300 bg-zinc-950 border border-zinc-800 relative"
                         aria-label="Toggle theme"
                     >
@@ -80,10 +80,10 @@
                 <div class="px-3 py-2 flex justify-start">
                     <div 
                         id="themeToggleMobile"
-                        onclick="toggleTheme()" 
+                        onclick="if(typeof toggleTheme === 'function') { toggleTheme(); } else { const isDark = document.documentElement.classList.contains('dark'); document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); localStorage.setItem('portfolio-theme', isDark ? 'light' : 'dark'); }" 
                         role="button"
                         tabindex="0"
-                        onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleTheme(); }"
+                        onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); if(typeof toggleTheme === 'function') { toggleTheme(); } else { const isDark = document.documentElement.classList.contains('dark'); document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); localStorage.setItem('portfolio-theme', isDark ? 'light' : 'dark'); } }"
                         class="flex w-16 h-8 p-1 rounded-full cursor-pointer transition-all duration-300 bg-zinc-950 border border-zinc-800 relative"
                         aria-label="Toggle theme"
                     >
@@ -228,6 +228,14 @@
  </div>
     </footer>
 
+    <script>
+        // Ensure theme toggle loads even if script fails
+        window.addEventListener('error', function(e) {
+            if (e.filename && e.filename.includes('theme-toggle')) {
+                console.error('Theme toggle script failed to load:', e);
+            }
+        }, true);
+    </script>
     <script src="./src/theme-toggle.js"></script>
     <script>
         // Smooth scrolling - only for anchor links on the same page

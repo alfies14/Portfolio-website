@@ -78,11 +78,23 @@
     }
   }
   
-  // Expose functions globally
+  // Expose functions globally - ensure they're always available
   window.toggleTheme = function() {
-    const newTheme = toggleTheme();
-    updateToggleUI(newTheme === 'dark');
-    return newTheme;
+    try {
+      const newTheme = toggleTheme();
+      updateToggleUI(newTheme === 'dark');
+      return newTheme;
+    } catch (error) {
+      console.error('Error toggling theme:', error);
+      // Fallback: just toggle the class
+      const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(newTheme);
+      localStorage.setItem(themeKey, newTheme);
+      updateToggleUI(newTheme === 'dark');
+      return newTheme;
+    }
   };
   window.getTheme = getTheme;
   window.setTheme = setTheme;
