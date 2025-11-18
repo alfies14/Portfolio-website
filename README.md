@@ -148,5 +148,5 @@ This project is part of a personal portfolio.
 
 ## Contact
 
-- **Email**: diazfloresj100@gmail.com
-- **GitHub**: [@josuediazflores](https://github.com/josuediazflores)
+- **Email**: alfredorodriguez0704@gmail.com
+- **GitHub**: [@alfies14](https://github.com/alfies14)
