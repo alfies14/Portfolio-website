@@ -78,10 +78,6 @@
     }
   }
   
-  // Initialize theme on load
-  const initialTheme = getTheme();
-  setTheme(initialTheme);
-  
   // Expose functions globally
   window.toggleTheme = function() {
     const newTheme = toggleTheme();
@@ -89,17 +85,29 @@
     return newTheme;
   };
   window.getTheme = getTheme;
+  window.setTheme = setTheme;
   window.updateThemeToggle = updateToggleUI;
   
-  // Update toggle when DOM is ready
-  function initToggle() {
-    updateToggleUI(getTheme() === 'dark');
+  // Initialize theme and UI when DOM is ready
+  function initTheme() {
+    const currentTheme = getTheme();
+    // Make sure the theme class is set
+    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
+      setTheme(currentTheme);
+    } else {
+      // Sync the class with stored theme
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(currentTheme);
+      updateToggleUI(currentTheme === 'dark');
+    }
   }
   
+  // Run immediately if DOM is ready, otherwise wait
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initToggle);
+    document.addEventListener('DOMContentLoaded', initTheme);
   } else {
-    initToggle();
+    // Small delay to ensure DOM is fully ready
+    setTimeout(initTheme, 0);
   }
 })();
 
