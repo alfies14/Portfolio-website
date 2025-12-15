@@ -36,6 +36,8 @@
                         class="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">Home</a>
                     <a href="#about"
                         class="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">About</a>
+                    <a href="#projects"
+                        class="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">Projects</a>
                     <a href="https://github.com/alfies14" target="_blank" rel="noopener noreferrer"
                         class="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">GitHub</a>
                     <a href="https://www.linkedin.com/in/alfredo-rodriguez-flores-152462281/" target="_blank"
@@ -97,6 +99,7 @@
             <div class="px-4 pt-2 pb-4 space-y-2">
                 <a href="#home" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-accent">Home</a>
                 <a href="#about" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-accent">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-accent">Projects</a>
                 <a href="https://github.com/alfies14" target="_blank" rel="noopener noreferrer"
                     class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-accent">GitHub</a>
                 <a href="https://www.linkedin.com/in/alfredo-rodriguez-flores-152462281/" target="_blank"
@@ -256,8 +259,116 @@
         </div>
     </section>
 
+    <!-- Photo Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-4xl font-bold mb-4 text-center">Bay Area Views</h2>
+            <p class="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+                Captured from the Marin Headlands — one of my favorite spots in the Bay Area
+            </p>
+            <div class="relative group overflow-hidden rounded-2xl shadow-2xl">
+                <img 
+                    src="./images/golden-gate.jpg" 
+                    alt="Golden Gate Bridge view from Marin Headlands" 
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p class="text-lg font-semibold">Golden Gate Bridge</p>
+                    <p class="text-sm opacity-80">Marin Headlands, California</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-4 text-center">Projects</h2>
+            <p class="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+                A showcase of my work and experiments. More coming soon!
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card 1 - Coming Soon -->
+                <div class="group relative bg-background border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-primary/40 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            <span class="text-sm text-muted-foreground">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-foreground">Project Coming Soon</h3>
+                        <p class="text-sm text-muted-foreground mb-4">
+                            Exciting new project in development. Stay tuned for updates!
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground">TBD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 - Coming Soon -->
+                <div class="group relative bg-background border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-video bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-blue-500/40 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            <span class="text-sm text-muted-foreground">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-foreground">Project Coming Soon</h3>
+                        <p class="text-sm text-muted-foreground mb-4">
+                            Another exciting project in the works. Check back later!
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground">TBD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 - Coming Soon -->
+                <div class="group relative bg-background border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-video bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-emerald-500/40 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            <span class="text-sm text-muted-foreground">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-foreground">Project Coming Soon</h3>
+                        <p class="text-sm text-muted-foreground mb-4">
+                            More projects on the way. Follow my GitHub for updates!
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground">TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/alfies14" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto max-w-2xl text-center">
             <h2 class="text-4xl font-bold mb-8">Connect With Me</h2>
             <p class="text-lg text-muted-foreground mb-8">
